@@ -1,0 +1,77 @@
+-- OSAMA FAYYAZ AHMAD
+-- 215888753
+
+INSERT INTO record_company(title, address, homepage, telephone) values
+('Atlantic Records', 'United States', '.com', '3352341'),
+('Swan Song', 'London', 'swan.com', '32414124');
+
+
+INSERT INTO album (title, record_title, album_year) values 
+('Led Zeppelin', 'Atlantic Records', '1969-12-01'),
+('Led Zeppelin II', 'Atlantic Records', '1969-10-22'),
+('Led Zeppelin III', 'Atlantic Records', '1970-10-05'),
+('Houses of the Holy', 'Atlantic Records', '1973-03-28'),
+('Physical Graffiti', 'Swan Song', '1975-02-24');
+
+
+INSERT INTO song (title, genre) values 
+('Good Times Bad Times', 'Hard rock'),
+('Babe Im Gonna Leave You', 'rock'),
+("You Shook Me", 'rock'),
+("Dazed and Confused", 'rock'),
+("Your Time is Gonna Come", 'rock'),
+('Black Mountain Side', 'rock'),
+('Communication Breakdown', 'rock'),
+('I Cant Quit You Baby', 'rock'),
+('How Many More Times', 'rock'),
+('Whole Lotta Love', 'rock');
+
+
+INSERT INTO recording (album_title, record_title, song_title, number, studio) values
+('Led Zeppelin', 'Atlantic Records', 'Good Times Bad Times', 1, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'Babe Im Gonna Leave You', 2, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'You Shook Me', 3, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'Dazed and Confused', 4, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'Your Time is Gonna Come', 5, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'Black Mountain Side', 6, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'Communication Breakdown', 7, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'I Cant Quit You Baby', 8, 'Olympic'),
+('Led Zeppelin', 'Atlantic Records', 'How Many More Times', 9, 'Olympic'),
+('Led Zeppelin II', 'Atlantic Records', 'Whole Lotta Love', 10, 'Olympic');
+
+INSERT INTO orchestra (name) values
+('TC Kazoo');
+
+
+
+INSERT INTO week (startday) values
+('1969-12-01'),
+('1989-01-01');
+
+
+INSERT INTO chart (name) values
+('Canada Top Singles'),
+('100 Greatest Singles');
+
+
+INSERT INTO charts (album_title, record_title, song_title, rank_charts, startday, chart_name) values
+('Led Zeppelin', 'Atlantic Records', 'Good Times Bad Times', 64, '1969-12-01', 'Canada Top Singles'),
+('Led Zeppelin II', 'Atlantic Records', 'Whole Lotta Love', 39, '1989-01-01', '100 Greatest Singles');
+
+
+INSERT INTO musician(name) values
+('Jimmy Page');
+
+INSERT INTO instrument(instrument) values
+('Guitar');
+
+
+INSERT INTO performs (name, instrument, album_title, record_title, song_title) values
+('Jimmy Page', 'Guitar', 'Led Zeppelin', 'Atlantic Records', 'Good Times Bad Times'),
+('Jimmy Page', 'Guitar', 'Led Zeppelin', 'Atlantic Records', 'Babe Im Gonna Leave You');
+
+
+update recording set orchestra_name = 'TC Kazoo'
+where song_title = 'Whole Lotta Love';
+
+

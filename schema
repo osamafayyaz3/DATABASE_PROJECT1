@@ -1,0 +1,105 @@
+-- OSAMA FAYYAZ AHMAD
+-- 215888753
+
+
+CREATE TABLE record_company (
+    title varchar(30) NOT NULL PRIMARY KEY,
+    address varchar(30),
+    homepage varchar(30),
+    telephone int
+);
+
+
+CREATE TABLE instrument (
+    instrument varchar(30) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE musician (
+    name varchar(30) NOT NULL PRIMARY KEY,
+    hometown varchar(30)
+);
+
+
+CREATE TABLE artist (
+    name varchar(30) NOT NULL PRIMARY KEY,
+    bio varchar(30),
+    homepage varchar(30),
+    FOREIGN KEY (name) REFERENCES musician(name)
+);
+
+CREATE TABLE song (
+    title varchar(30) NOT NULL PRIMARY KEY,
+    genre varchar(30)
+);
+
+CREATE TABLE orchestra (
+    name varchar(30) NOT NULL PRIMARY KEY,
+    address varchar(30),
+    size int,
+    conductor varchar(30)
+);
+
+CREATE TABLE chart (
+    name varchar(30) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE week (
+    startday date NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE album (
+    title varchar(30) NOT NULL,
+    record_title varchar(30) NOT NULL,
+    album_year date,
+    PRIMARY KEY(title, record_title),
+    FOREIGN KEY (record_title) REFERENCES record_company(title)
+);
+
+CREATE TABLE recording (
+    album_title varchar(30) NOT NULL,
+    record_title varchar(30) NOT NULL,
+    song_title varchar(30) NOT NULL,
+    number int ,
+    studio varchar(30),
+    orchestra_name varchar(30),
+    PRIMARY KEY (album_title, record_title, song_title),
+    FOREIGN KEY (album_title, record_title) REFERENCES album(title, record_title),
+    FOREIGN KEY (song_title) REFERENCES song(title),
+    FOREIGN KEY (orchestra_name) REFERENCES orchestra(name)
+);
+
+
+
+CREATE TABLE performs (
+    name varchar(30) NOT NULL,
+    instrument varchar(30) NOT NULL,
+    album_title varchar(30) NOT NULL,
+    record_title varchar(30) NOT NULL,
+    song_title varchar(30) NOT NULL,
+    PRIMARY KEY (name, instrument, album_title, record_title, song_title),
+    FOREIGN KEY (name) REFERENCES musician(name),
+    FOREIGN KEY (instrument) REFERENCES instrument(instrument),
+    FOREIGN KEY (album_title, record_title, song_title) REFERENCES recording(album_title, record_title, song_title)
+);
+
+CREATE TABLE charts (
+    album_title varchar(30) NOT NULL,
+    record_title varchar(30) NOT NULL,
+    song_title varchar(30) NOT NULL,
+    rank_charts INT,
+    startday date NOT NULL,
+    chart_name varchar(30) NOT NULL,
+    PRIMARY KEY (album_title, record_title, song_title, startday, chart_name),
+    FOREIGN KEY (album_title, record_title, song_title) REFERENCES recording(album_title, record_title, song_title),
+    FOREIGN KEY (startday) REFERENCES week(startday),
+    FOREIGN KEY (chart_name) REFERENCES chart(name)
+);
+
+CREATE TABLE composed (
+    musician_name varchar(30) NOT NULL,
+    role varchar(30),
+    song_title varchar(30) NOT NULL,
+    PRIMARY KEY (musician_name, song_title),
+    FOREIGN KEY (musician_name) REFERENCES musician(name),
+    FOREIGN KEY (song_title) REFERENCES song(title)
+);

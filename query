@@ -1,0 +1,8 @@
+-- OSAMA FAYYAZ AHMAD
+-- 215888753
+
+SELECT recording.song_title, orchestra_name
+FROM recording
+INNER JOIN charts
+ON recording.song_title = charts.song_title
+where rank_charts < 100;
